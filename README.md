@@ -4,7 +4,6 @@
 
 1. Клонируйте репозиторий:
    git clone https://github.com/ftox121/weather.git
-   cd weather
 Создайте виртуальное окружение и активируйте его:
 python -m venv env
 source env/bin/activate  # Для Windows: env\Scripts\activate
