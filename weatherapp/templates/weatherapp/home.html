@@ -1,0 +1,39 @@
+{% extends "weatherapp/base.html" %}
+
+{% block content %}
+<div class="container text-center mt-5">
+    <h1 class="display-4">Weather Information</h1>
+    {% if error %}
+        <div class="alert alert-danger mt-4">{{ error }}</div>
+    {% elif data %}
+        <div class="card mt-4">
+            <div class="card-body">
+                <h5 class="card-title">Weather Details</h5>
+                <p class="card-text"><strong>Country Code:</strong> {{ data.country_code }}</p>
+                <p class="card-text"><strong>Coordinates:</strong> {{ data.coordinate }}</p>
+                <p class="card-text"><strong>Temperature:</strong> {{ data.temp }}</p>
+                <p class="card-text"><strong>Pressure:</strong> {{ data.pressure }} hPa</p>
+                <p class="card-text"><strong>Humidity:</strong> {{ data.humidity }}%</p>
+                <p class="card-text"><strong>Forecast:</strong> {{ data.main }} <img src="http://openweathermap.org/img/w/{{ data.icon }}.png" alt="Weather icon"></p>
+                <p class="card-text"><strong>Description:</strong> {{ data.description }}</p>
+            </div>
+        </div>
+    {% elif country_code %}
+        <div class="card text-center mt-4">
+            <div class="card-header">
+                Weather in {{ city }}
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Country Code: {{ country_code }}</h5>
+                <p class="card-text">Coordinates: {{ coordinate }}</p>
+                <p class="card-text">Temperature: {{ temp }}</p>
+                <p class="card-text">Pressure: {{ pressure }}</p>
+                <p class="card-text">Humidity: {{ humidity }}</p>
+                <p class="card-text">Weather: {{ main }} - {{ description }} <img src="http://openweathermap.org/img/w/{{ icon }}.png" alt="weather icon"></p>
+            </div>
+        </div>
+    {% else %}
+        <p class="mt-4">Please enter a city to get the weather information.</p>
+    {% endif %}
+</div>
+{% endblock %}
